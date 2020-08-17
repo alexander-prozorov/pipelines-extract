@@ -1,0 +1,12 @@
+trigger:
+- master
+
+pool: v-aprozo
+
+steps: 
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: 'src/*.zip'
+    destinationFolder: 'extracted/'
+    cleanDestinationFolder: true
+
