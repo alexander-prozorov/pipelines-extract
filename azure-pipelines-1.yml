@@ -9,7 +9,7 @@ trigger:
 pool: v-aprozo
 
 steps:
-- task: SSH@0
+- task: 91443475-df55-4874-944b-39253b558790@0
   inputs:
     sshEndpoint: 'vscale'
     runOptions: 'inline'
