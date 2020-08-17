@@ -8,5 +8,4 @@ steps:
   inputs:
     archiveFilePatterns: 'src/archive1.tar.gz'
     destinationFolder: 'src/'
-    cleanDestinationFolder: true
 
