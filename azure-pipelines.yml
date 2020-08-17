@@ -7,6 +7,6 @@ steps:
 - task: ExtractFiles@1
   inputs:
     archiveFilePatterns: 'src/archive1.tar.gz'
-    destinationFolder: 'extracted/'
+    destinationFolder: 'src/'
     cleanDestinationFolder: true
 
