@@ -6,7 +6,7 @@ pool: v-aprozo
 steps: 
 - task: ExtractFiles@1
   inputs:
-    archiveFilePatterns: 'src/*.zip'
+    archiveFilePatterns: 'src/*.tar.gz'
     destinationFolder: 'extracted/'
     cleanDestinationFolder: true
 
