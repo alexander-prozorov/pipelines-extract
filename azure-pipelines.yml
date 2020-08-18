@@ -12,9 +12,9 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      file=./files/archive1.txt
-      if [ ! -e "$file" ]; then
-          echo "File does not exist"
-      else 
-          echo "File exists"
-      fi
+      archive1=./files/archive1.txt
+      archive2=./files/archive2.txt
+      if [ ! -e "$archive1" ]; then
+          exit 1
+      if [ -e "$archive2" ]; then
+          exit 1
