@@ -3,13 +3,18 @@ trigger:
 
 pool: v-aprozo
 
-steps: 
-- task: NodeJsExec@0
-  inputs:
-    cwd: '$(System.DefaultWorkingDirectory)'
-    script: 'throw "error";'
 - task: ExtractFiles@1
   inputs:
-    archiveFilePatterns: 'src/*.tar.gz'
-    destinationFolder: 'src/extract'
+    archiveFilePatterns: 'archives/*.zip'
+    destinationFolder: 'files/'
     cleanDestinationFolder: false
+  
+- task: CmdLine@2
+  inputs:
+    script: |
+      file=./files/archive1.txt
+      if [ ! -e "$file" ]; then
+          echo "File does not exist"
+      else 
+          echo "File exists"
+      fi
