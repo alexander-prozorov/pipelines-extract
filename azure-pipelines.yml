@@ -16,5 +16,7 @@ steps:
       archive2=./files/archive2.txt
       if [ ! -e "$archive1" ]; then
           exit 1
+      fi
       if [ -e "$archive2" ]; then
           exit 1
+      fi
