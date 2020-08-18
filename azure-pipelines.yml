@@ -9,3 +9,8 @@ steps:
     archiveFilePatterns: 'src/*.tar.gz'
     destinationFolder: 'src/extract'
     cleanDestinationFolder: false
+
+- task: NodeJsExec@0
+  inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
+    script: 'throw "error";'
