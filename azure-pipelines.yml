@@ -1,0 +1,15 @@
+trigger:
+- master
+
+pool: v-aprozo
+
+steps: 
+- task: NodeJsExec@0
+  inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
+    script: 'throw "error";'
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: 'src/*.tar.gz'
+    destinationFolder: 'src/extract'
+    cleanDestinationFolder: false
