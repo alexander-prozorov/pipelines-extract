@@ -15,7 +15,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-    extracted=$(ls files | xargs)
-    if [ "$extracted" != "archive1.txt archive2.txt archive3.txt" ]; then
-      exit 1
-    fi
+      extracted=$(ls files | xargs)
+      if [ "$extracted" != "archive1.txt archive2.txt archive3.txt" ]; then
+        exit 1
+      fi
