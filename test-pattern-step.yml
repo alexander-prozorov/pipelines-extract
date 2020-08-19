@@ -14,7 +14,7 @@ steps:
   inputs:
     script: |
       extracted=$(ls files | xargs)
-      printf "Pattern: %s, Extracted fles: %s\n" ${{ parameters.pattern }} "$extracted"
+      printf "Extracted fles: %s\n" "$extracted"
       if [ "$extracted" != ${{ parameters.files }} ]; then
         exit 1
       fi
