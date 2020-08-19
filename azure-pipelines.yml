@@ -3,49 +3,6 @@ trigger:
 
 pool: v-aprozo
 steps:
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: 'archives/*.zip'
-    destinationFolder: 'files/'
-    cleanDestinationFolder: true
-  
-- task: CmdLine@2
-  inputs:
-    script: |
-      archive1=./files/archive1.txt
-      archive2=./files/archive2.txt
-      archive3=./files/archive3.txt
-      if [ ! -e "$archive1" ] || [ -e "$archive2" ] || [ -e "$archive3" ]; then
-          exit 1
-      fi
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: 'archives/*/*.zip'
-    destinationFolder: 'files/'
-    cleanDestinationFolder: true
-  
-- task: CmdLine@2
-  inputs:
-    script: |
-      archive1=./files/archive1.txt
-      archive2=./files/archive2.txt
-      archive3=./files/archive3.txt
-      if [ -e "$archive1" ] || [ ! -e "$archive2" ] || [ -e "$archive3" ]; then
-          exit 1
-      fi
-
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: 'archives/**/*.zip'
-    destinationFolder: 'files/'
-    cleanDestinationFolder: true
-  
-- task: CmdLine@2
-  inputs:
-    script: |
-      archive1=./files/archive1.txt
-      archive2=./files/archive2.txt
-      archive3=./files/archive3.txt
-      if [ ! -e "$archive1" ] || [ ! -e "$archive2" ] || [ ! -e "$archive3" ]; then
-          exit 1
-      fi
+- template: test-pattern-step.yml
+  parameters:
+    pattern: 'archives/*.zip'
