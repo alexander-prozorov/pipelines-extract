@@ -6,16 +6,14 @@ steps:
 - template: test-pattern-step.yml
   parameters:
     pattern: 'archives/*.zip'
+    files: 'archive1.txt'
+  
+- template: test-pattern-step.yml
+  parameters:
+    pattern: 'archives/*/*.zip'
+    files: 'archive2.txt'
 
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns:  'archives/*.zip'
-    destinationFolder: 'files/'
-    cleanDestinationFolder: true
-- task: CmdLine@2
-  inputs:
-    script: |
-      extracted=$(ls files | xargs)
-      if [ "$extracted" != "archive1.txt archive2.txt archive3.txt" ]; then
-        exit 1
-      fi
+- template: test-pattern-step.yml
+  parameters:
+    pattern: 'archives/**/*.zip'
+    files: 'archive1.txt archive2.txt archive3.txt'
