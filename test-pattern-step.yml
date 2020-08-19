@@ -1,6 +1,8 @@
 parameters:
 - name: 'pattern'
   type: string
+- name: 'files'
+  type: string
 
 steps:
 - task: ExtractFiles@1
