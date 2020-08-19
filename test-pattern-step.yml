@@ -11,9 +11,8 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      archive1=./files/archive1.txt
-      archive2=./files/archive2.txt
-      archive3=./files/archive3.txt
-      if [ ! -e "$archive1" ] || [ -e "$archive2" ] || [ -e "$archive3" ]; then
-          exit 1
+      extracted=$(ls files | xargs)
+      printf "Pattern: %s, Extracted fles: %s\n" ${{ parameters.pattern }} "$extracted"
+      if [ "$extracted" != ${{ parameters.files }} ]; then
+        exit 1
       fi
