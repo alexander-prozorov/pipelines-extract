@@ -6,3 +6,13 @@ steps:
 - template: test-pattern-step.yml
   parameters:
     pattern: 'archives/*.zip'
+
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns:  'archives/**/*.zip'
+    destinationFolder: 'files/'
+    cleanDestinationFolder: true
+- task: CmdLine@2
+  inputs:
+    script: |
+      ls
