@@ -15,5 +15,5 @@ steps:
     script: |
       extracted=$(ls files | xargs)
       if [ "$extracted" != ${{ parameters.files }} ]; then
-        echo "Extracted fles: $extracted, expected: ${{ parameters.files }}"; exit 1;
+        echo "Extracted fles: $extracted, expected: ${{ parameters.files }}" >&2; exit 1;
       fi
