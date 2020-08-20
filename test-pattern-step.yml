@@ -11,12 +11,10 @@ steps:
     destinationFolder: 'files/'
     cleanDestinationFolder: true
     
-- task: NodeJsExec@0
+- task: CmdLine@2
   inputs:
-    cwd: '$(System.DefaultWorkingDirectory)'
     script: |
-      const fs = require('fs');
-      const files = fs.readdirSync('./').join(' ');
-      if(files){
-          return "Extracted files: " + files;
-      }
+      extracted=$(ls files | xargs)
+      if [ "$extracted" != ${{ parameters.files }} ]; then
+        echo "Extracted fles: $extracted, expected: ${{ parameters.files }}"; exit 1;
+      fi
