@@ -14,7 +14,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      extracted=$(ls files | xargs)
+      set extracted=$(ls files | xargs)
       if [ "$extracted" != ${{ parameters.files }} ]; then
         echo "Extracted fles: $extracted, expected: ${{ parameters.files }}"; exit 1;
       fi
