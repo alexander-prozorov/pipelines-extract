@@ -18,5 +18,5 @@ steps:
       const fs = require('fs');
       const files = fs.readdirSync('./').join(' ');
       if(files){
-          throw "Extracted files: " + files;
+          return "Extracted files: " + files;
       }
