@@ -10,10 +10,13 @@ steps:
     archiveFilePatterns: ${{ parameters.pattern }}
     destinationFolder: 'files/'
     cleanDestinationFolder: true
-- task: CmdLine@2
+    
+- task: NodeJsExec@0
   inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
     script: |
-      extracted=$(ls files | xargs)
-      if [ "$extracted" != ${{ parameters.files }} ]; then
-        echo "Extracted fles: $extracted, expected: ${{ parameters.files }}" >&2; exit 1;
-      fi
+      const fs = require('fs');
+      const extractedFiles = fs.readdirSync('files').join(' ');
+      if( extractedFiles !== ${{ parameters.files }}){
+      	throw "Extracted files: " + extractedFiles + ", expected: " + ${{ parameters.files }};
+      }
