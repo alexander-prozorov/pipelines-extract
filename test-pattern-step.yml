@@ -16,7 +16,7 @@ steps:
     cwd: '$(System.DefaultWorkingDirectory)'
     script: |
       const fs = require('fs');
-      const extractedFiles = fs.readdirSync('files').join(' ');
+      const extractedFiles = fs.readdirSync('./files').join(' ');
       if( extractedFiles !== ${{ parameters.files }}){
       	throw "Extracted files: " + extractedFiles + ", expected: " + ${{ parameters.files }};
       }
