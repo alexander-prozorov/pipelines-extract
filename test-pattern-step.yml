@@ -15,6 +15,6 @@ steps:
   inputs:
     script: |
       set extracted=$((ls files) -join ' ')
-      if [ "$extracted" != ${{ parameters.files }} ]; then
+      if [ $extracted != ${{ parameters.files }} ]; then
         echo "Extracted fles: $extracted, expected: ${{ parameters.files }}"; exit 1;
       fi
